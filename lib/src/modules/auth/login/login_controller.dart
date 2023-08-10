@@ -9,29 +9,29 @@ enum LoginStateStatus {
   initial,
   loading,
   success,
-  error;
+  error,
 }
 
 class LoginController extends GetxController {
-  final AuthService? authService;
+  final AuthService _authService;
 
-  var loginStatus = LoginStateStatus.initial.obs;
+  final loginStatus = Rx<LoginStateStatus>(LoginStateStatus.initial);
 
-  var erroMessage = ''.obs;
+  final errorMessage = Rx<String?>(null);
 
-  LoginController({this.authService});
+  LoginController(this._authService);
 
   Future<void> login(String cpf, String password) async {
     try {
       loginStatus.value = LoginStateStatus.loading;
-      await authService!.execute(cpf: cpf, password: password);
+      await _authService.execute(cpf: cpf, password: password);
       loginStatus.value = LoginStateStatus.success;
     } on UnauthorizedException {
-      erroMessage.value = 'Login ou senha invalidos';
+      errorMessage.value = 'Login ou senha inválidos';
       loginStatus.value = LoginStateStatus.error;
     } catch (e, s) {
-      log('Error ao realizar login', error: e, stackTrace: s);
-      erroMessage.value = 'Tente Novamente mais tarde';
+      log('Erro ao realizar login', error: e, stackTrace: s);
+      errorMessage.value = 'Tente novamente mais tarde';
       loginStatus.value = LoginStateStatus.error;
     }
   }

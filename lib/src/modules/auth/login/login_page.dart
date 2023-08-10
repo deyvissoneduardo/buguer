@@ -41,11 +41,11 @@ class _LoginPageState extends State<LoginPage> with Loader, Messages {
         break;
       case LoginStateStatus.success:
         hiderLoader();
-        Get.toNamed(AppRoutes.HOME_PAGE);
+        Get.toNamed(AppRoutes.PRODUCTS_PAGE);
         break;
       case LoginStateStatus.error:
         hiderLoader();
-        showError(controller.erroMessage.value);
+        showError(controller.errorMessage.value!);
         break;
     }
   }

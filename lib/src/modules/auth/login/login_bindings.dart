@@ -22,7 +22,7 @@ class LoginBindings implements Bindings {
     );
     Get.lazyPut(
       () => LoginController(
-        authService: Get.find<AuthService>(),
+        Get.find<AuthService>(),
       ),
     );
   }

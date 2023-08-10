@@ -1,33 +1,34 @@
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../modules/auth/login/login_bindings.dart';
 import '../modules/auth/login/login_page.dart';
-import '../modules/auth/register/register_bindings.dart';
 import '../modules/auth/register/register_page.dart';
 import '../modules/home/home_page.dart';
+import '../modules/products/products_page.dart';
+import '../template/base_layout.dart';
 
 class AppRoutes {
   static const HOME_PAGE = '/home_page';
   static const LOGIN_PAGE = '/login_page';
   static const REGISTER_PAGE = '/register';
+  static const PRODUCTS_PAGE = '/products';
 
-  static List<GetPage<Widget>> pages = [
+  static List<GetPage> pages = [
+    GetPage(name: '/login', page: () => const LoginPage()),
     GetPage(
-      name: HOME_PAGE,
-      page: () => const HomePage(),
-    ),
-    GetPage(
-      name: LOGIN_PAGE,
-      page: () => const LoginPage(),
-      binding: LoginBindings(),
-      transition: Transition.leftToRight,
-    ),
-    GetPage(
-      name: REGISTER_PAGE,
-      transition: Transition.leftToRight,
+      name: '/register',
       page: () => const RegisterPage(),
-      binding: RegisterBindings(),
-    )
+      transition: Transition.leftToRight,
+    ),
+    GetPage(
+      name: '/',
+      page: () => const BaseLayout(body: HomePage()),
+      transition: Transition.noTransition,
+      children: [
+        GetPage(
+          name: '/products',
+          page: () => const ProductsPage(),
+        ),
+      ],
+    ),
   ];
 }

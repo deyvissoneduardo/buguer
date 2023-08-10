@@ -14,7 +14,7 @@ Future<void> main() async {
     GetMaterialApp(
       theme: ThemeConfig.theme,
       initialBinding: CoreBindings(),
-      initialRoute: AppRoutes.LOGIN_PAGE,
+      initialRoute: AppRoutes.HOME_PAGE,
       getPages: AppRoutes.pages,
       home: const LoginPage(),
       enableLog: true,

@@ -11,12 +11,14 @@ import '../../repositories/user/user_repository.dart';
 import '../../repositories/user/user_repository_impl.dart';
 import '../auth/login/login_bindings.dart';
 import '../auth/register/register_bindings.dart';
+import '../products/products_bindings.dart';
 
 class CoreBindings implements Bindings {
   @override
   void dependencies() {
     LoginBindings().dependencies();
     RegisterBindings().dependencies();
+    ProductsBindings().dependencies();
 
     Get.lazyPut<Storage>(
       () => SessionStorage(),
