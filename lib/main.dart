@@ -15,6 +15,7 @@ Future<void> main() async {
       theme: ThemeConfig.theme,
       initialBinding: CoreBindings(),
       initialRoute: AppRoutes.LOGIN_PAGE,
+      getPages: AppRoutes.pages,
       home: const LoginPage(),
       enableLog: true,
     ),

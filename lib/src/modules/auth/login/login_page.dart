@@ -16,9 +16,10 @@ class _LoginPageState extends State<LoginPage> with Loader, Messages {
   final cpfEC = TextEditingController();
   final passwordEC = TextEditingController();
   final formKey = GlobalKey<FormState>();
-  final controller = LoginController();
+  final controller = Get.find<LoginController>();
 
   void _formSubmit() {
+    controller.loginStatus.value = LoginStateStatus.loading;
     final formValid = formKey.currentState?.validate() ?? false;
     if (formValid) {
       controller.login(
@@ -26,6 +27,7 @@ class _LoginPageState extends State<LoginPage> with Loader, Messages {
         passwordEC.text,
       );
     }
+    controller.loginStatus.value = LoginStateStatus.success;
   }
 
   @override
@@ -39,7 +41,7 @@ class _LoginPageState extends State<LoginPage> with Loader, Messages {
         break;
       case LoginStateStatus.success:
         hiderLoader();
-        Get.toNamed(AppRoutes.LOGIN_PAGE);
+        Get.toNamed(AppRoutes.HOME_PAGE);
         break;
       case LoginStateStatus.error:
         hiderLoader();
@@ -57,29 +59,24 @@ class _LoginPageState extends State<LoginPage> with Loader, Messages {
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<LoginController>(
-      init: controller,
-      builder: (controller) {
-        return Scaffold(
-          backgroundColor: context.colors.black,
-          body: Form(
-            key: formKey,
-            child: Stack(
-              alignment: Alignment.topCenter,
-              children: [
-                const LunchWidget(),
-                const LogoWidget(),
-                FormLogin(
-                  cpfEC: cpfEC,
-                  passwordEC: passwordEC,
-                  onFieldSubmitted: (_) => _formSubmit(),
-                  onPressed: () => _formSubmit(),
-                )
-              ],
-            ),
-          ),
-        );
-      },
+    return Scaffold(
+      backgroundColor: context.colors.black,
+      body: Form(
+        key: formKey,
+        child: Stack(
+          alignment: Alignment.topCenter,
+          children: [
+            const LunchWidget(),
+            const LogoWidget(),
+            FormLogin(
+              cpfEC: cpfEC,
+              passwordEC: passwordEC,
+              onFieldSubmitted: (_) => _formSubmit(),
+              onPressed: () => _formSubmit(),
+            )
+          ],
+        ),
+      ),
     );
   }
 }

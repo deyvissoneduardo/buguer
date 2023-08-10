@@ -10,10 +10,14 @@ import '../../repositories/products/products_repository_impl.dart';
 import '../../repositories/user/user_repository.dart';
 import '../../repositories/user/user_repository_impl.dart';
 import '../auth/login/login_bindings.dart';
+import '../auth/register/register_bindings.dart';
 
 class CoreBindings implements Bindings {
   @override
   void dependencies() {
+    LoginBindings().dependencies();
+    RegisterBindings().dependencies();
+
     Get.lazyPut<Storage>(
       () => SessionStorage(),
       fenix: true,
@@ -34,7 +38,5 @@ class CoreBindings implements Bindings {
       () => UserRepositoryImpl(Get.find<CustomDio>()),
       fenix: true,
     );
-
-    LoginBindings().dependencies();
   }
 }
