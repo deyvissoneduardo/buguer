@@ -97,7 +97,15 @@ class BaseLayout extends StatelessWidget {
                       child: Container(
                         padding: const EdgeInsets.only(left: 20),
                         color: Colors.grey[50]!,
-                        child: body,
+                        child: Container(
+                          color: Colors.grey[50],
+                          padding: const EdgeInsets.only(
+                            left: 40,
+                            top: 40,
+                            right: 40,
+                          ),
+                          child: body,
+                        ),
                       ),
                     )
                   ],

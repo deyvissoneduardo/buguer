@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../core/ui/core_ui.dart';
+import '../../../template/base_layout.dart';
 import 'products_controller.dart';
 import 'widgets/product_item.dart';
 
@@ -50,10 +51,8 @@ class _ProductsPageState extends State<ProductsPage> with Loader, Messages {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.grey[50],
-      padding: const EdgeInsets.only(left: 40, top: 40, right: 40),
-      child: Column(
+    return BaseLayout(
+      body: Column(
         children: [
           BaseHeader(
             title: 'ADMINISTRAR PRODUTOS',
@@ -69,23 +68,19 @@ class _ProductsPageState extends State<ProductsPage> with Loader, Messages {
             height: 50,
           ),
           Expanded(
-            child: Obx(
-              () {
-                return GridView.builder(
-                  itemCount: 10,
-                  gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-                    mainAxisExtent: 280,
-                    mainAxisSpacing: 20,
-                    maxCrossAxisExtent: 280,
-                    crossAxisSpacing: 10,
-                  ),
-                  itemBuilder: (context, index) {
-                    return const ProductItem();
-                  },
-                );
+            child: GridView.builder(
+              itemCount: 10,
+              gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+                mainAxisExtent: 280,
+                mainAxisSpacing: 20,
+                maxCrossAxisExtent: 280,
+                crossAxisSpacing: 10,
+              ),
+              itemBuilder: (context, index) {
+                return const ProductItem();
               },
             ),
-          )
+          ),
         ],
       ),
     );
