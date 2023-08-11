@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:get/get.dart';
 
-import '../../core/ui/core_ui.dart';
+import '../../../core/ui/core_ui.dart';
 import 'products_controller.dart';
 import 'widgets/product_item.dart';
 
@@ -41,10 +40,10 @@ class _ProductsPageState extends State<ProductsPage> with Loader, Messages {
           uri += '?id=${productSelected.value!.id}';
 
           await Get.to(uri);
-          controller.loadProducts();
+          // controller.loadProducts();
           break;
       }
-      controller.loadProducts();
+      // controller.loadProducts();
     });
     super.initState();
   }
@@ -70,8 +69,8 @@ class _ProductsPageState extends State<ProductsPage> with Loader, Messages {
             height: 50,
           ),
           Expanded(
-            child: Observer(
-              builder: (_) {
+            child: Obx(
+              () {
                 return GridView.builder(
                   itemCount: 10,
                   gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(

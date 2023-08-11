@@ -47,9 +47,7 @@ class _MenuBarState extends State<MenuBar> with HistoryBackListner {
                   colapsed.value ? Alignment.center : Alignment.centerRight,
               child: IconButton(
                 onPressed: () {
-                  setState(() {
-                    colapsed.value = !colapsed.value;
-                  });
+                  colapsed.value = !colapsed.value;
                 },
                 icon: Icon(
                   colapsed.value
@@ -71,7 +69,7 @@ class _MenuBarState extends State<MenuBar> with HistoryBackListner {
                   menuSelected: selectedMenu.value,
                   onPressed: (Menu menu) {
                     selectedMenu.value = menu;
-                    Get.to(menu.route);
+                    Get.toNamed(menu.route);
                   },
                 );
               },

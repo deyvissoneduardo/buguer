@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import '../modules/auth/login/login_page.dart';
 import '../modules/auth/register/register_page.dart';
 import '../modules/home/home_page.dart';
-import '../modules/products/products_page.dart';
+import '../modules/products/home/products_page.dart';
 import '../template/base_layout.dart';
 
 class AppRoutes {

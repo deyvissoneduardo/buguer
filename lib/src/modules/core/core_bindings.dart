@@ -9,9 +9,15 @@ import '../../repositories/products/products_repository.dart';
 import '../../repositories/products/products_repository_impl.dart';
 import '../../repositories/user/user_repository.dart';
 import '../../repositories/user/user_repository_impl.dart';
+import '../../service/auth/auth_service.dart';
+import '../../service/products/products_service.dart';
 import '../auth/login/login_bindings.dart';
+import '../auth/login/login_controller.dart';
 import '../auth/register/register_bindings.dart';
+import '../auth/register/register_controller.dart';
+import '../products/detail/product_detail_controller.dart';
 import '../products/products_bindings.dart';
+import '../products/home/products_controller.dart';
 
 class CoreBindings implements Bindings {
   @override
@@ -39,6 +45,19 @@ class CoreBindings implements Bindings {
     Get.lazyPut<UserRepository>(
       () => UserRepositoryImpl(Get.find<CustomDio>()),
       fenix: true,
+    );
+
+    Get.lazyPut(
+      () => LoginController(Get.find<AuthService>()),
+    );
+    Get.lazyPut(
+      () => RegisterController(authService: Get.find<AuthService>()),
+    );
+    Get.lazyPut(
+      () => ProductsController(Get.find<ProductService>()),
+    );
+    Get.lazyPut(
+      () => ProductDetailController(Get.find<ProductService>()),
     );
   }
 }

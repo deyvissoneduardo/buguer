@@ -31,20 +31,22 @@ class BaseHeader extends StatelessWidget {
               replacement: filterWidget ?? const SizedBox.shrink(),
               child: SizedBox(
                 width: constrains.maxWidth * .15,
-                child: TextFormField(
-                  onChanged: searchChange,
-                  decoration: InputDecoration(
-                    isDense: true,
-                    contentPadding: EdgeInsets.zero,
-                    prefixIcon: Icon(
-                      Icons.search,
-                      size: constrains.maxWidth * 0.02,
-                    ),
-                    label: Text(
-                      'Buscar',
-                      style: context.textStyles.textRegular.copyWith(
-                        fontSize: 12,
-                        color: Colors.grey,
+                child: Material(
+                  child: TextFormField(
+                    onChanged: searchChange,
+                    decoration: InputDecoration(
+                      isDense: true,
+                      contentPadding: EdgeInsets.zero,
+                      prefixIcon: Icon(
+                        Icons.search,
+                        size: constrains.maxWidth * 0.02,
+                      ),
+                      label: Text(
+                        'Buscar',
+                        style: context.textStyles.textRegular.copyWith(
+                          fontSize: 12,
+                          color: Colors.grey,
+                        ),
                       ),
                     ),
                   ),

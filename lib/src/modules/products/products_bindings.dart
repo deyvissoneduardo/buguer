@@ -5,7 +5,8 @@ import '../../repositories/products/products_repository.dart';
 import '../../repositories/products/products_repository_impl.dart';
 import '../../service/products/products_service.dart';
 import '../../service/products/products_service_impl.dart';
-import 'products_controller.dart';
+import 'detail/product_detail_controller.dart';
+import 'home/products_controller.dart';
 
 class ProductsBindings implements Bindings {
   @override
@@ -18,6 +19,9 @@ class ProductsBindings implements Bindings {
     );
     Get.lazyPut(
       () => ProductsController(Get.find<ProductService>()),
+    );
+    Get.lazyPut(
+      () => ProductDetailController(Get.find<ProductService>()),
     );
   }
 }

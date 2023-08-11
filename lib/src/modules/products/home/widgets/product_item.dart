@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../../core/extensions/formatter_extensions.dart';
-import '../../../core/ui/core_ui.dart';
+import '../../../../core/extensions/formatter_extensions.dart';
+import '../../../../core/ui/core_ui.dart';
 
 class ProductItem extends StatelessWidget {
   // final ProductModel product;

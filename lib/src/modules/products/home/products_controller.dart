@@ -2,8 +2,8 @@ import 'dart:developer';
 
 import 'package:get/get.dart';
 
-import '../../models/product_model.dart';
-import '../../service/products/products_service.dart';
+import '../../../models/product_model.dart';
+import '../../../service/products/products_service.dart';
 
 enum ProductStateStatus {
   initial,
